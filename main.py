@@ -52,7 +52,12 @@ openai.api_key = "OPENAI_API_KEY"
 st.title("📝 Cover Letter Generator")
 textbox = st.text_area("Input your resume here...")
 textbox_button = st.button("Generate Cover Letter")
+# Generate the cover letter
 if textbox_button:
-    st.write(textbox)
+    prompt = f"Generate a cover letter for a job application based on the following information:\n{textbox}"
+    completions = openai.Completion.create(engine="text-davinci-003", prompt=prompt, temperature=0.2, max_tokens=1024,
+                                           top_p=0.9, frequency_penalty=1, presence_penalty=1, n=1, stop=None)
+    cover_letter = completions.choices[0].text
+    st.write(cover_letter)
 
 
