@@ -46,7 +46,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # OpenAI API Key
-openai.api_key = "API_KEY"
+openai.api_key = "OPENAI_API_KEY"
 
 # Web App Layout
 st.title("📝 Cover Letter Generator")
