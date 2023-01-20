@@ -51,16 +51,37 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 
-# Web App Layout
+# Title
 st.title("📝 Cover Letter Generator")
-textbox = st.text_area("Input your resume here...")
-textbox_button = st.button("Generate Cover Letter")
+# Intro Text
+intro = st.empty()
+with intro.container():
+    # Text body
+    st.markdown("""
+    ------------
+    ### What is Cover Letter Generator?
+    Cover Letter Generator is a web application that uses the power of OpenAI's GPT-3 model to generate custom cover letters for job applications. The app allows users to input their resume and then generates a cover letter tailored to the job they are applying for. The generated cover letter is based on the information provided by the user, making it unique and personalized. Cover Letter Generator is designed to make the job application process faster and more efficient by taking care of the tedious task of writing a cover letter.
+    
+    """)
+    st.info(
+        'Welcome to Cover Letter Generator! To get started, please provide the required information below.',
+        icon="ℹ️")
+# User Inputs
+user_name = st.text_input("Full Name:")
+job_title = st.text_input("Job Title:")
+company_name = st.text_input("Company Name:")
+resume = st.text_area("Resume:")
+generate_button = st.button("Generate Cover Letter", disabled=False)
+
 # Generate the cover letter
-if textbox_button:
-    prompt = f"Generate a cover letter for a job application based on the following information:\n{textbox}"
-    completions = openai.Completion.create(engine="text-davinci-003", prompt=prompt, temperature=0.2, max_tokens=1024,
-                                           top_p=0.9, frequency_penalty=1, presence_penalty=1, n=1, stop=None)
-    cover_letter = completions.choices[0].text
+if generate_button:
+    with st.spinner("Please wait. Currently generating cover letter..."):
+        prompt = f"Generate a cover letter for a job application as {job_title} at {company_name} for {user_name}.\nResume: {resume}"
+        completions = openai.Completion.create(engine="text-davinci-003", prompt=prompt, temperature=0.2, max_tokens=1024,
+                                               top_p=0.9, frequency_penalty=1, presence_penalty=1, n=1, stop=None)
+        cover_letter = completions.choices[0].text
     st.write(cover_letter)
+
+
 
 
