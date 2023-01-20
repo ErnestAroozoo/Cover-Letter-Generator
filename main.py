@@ -57,7 +57,7 @@ width: 100%;
 background-color: #212121;
 color: #f1f1f1;
 text-align: center;
-padding: 5px;
+padding: 2px;
 font-size: 12px;
 }
 a {
@@ -105,3 +105,27 @@ if generate_button:
                                                top_p=0.9, frequency_penalty=1, presence_penalty=1, n=1, stop=None)
         cover_letter = completions.choices[0].text
     st.write(cover_letter)
+
+# CUSTOMIZATION: Change footer again to prevent clipping
+add_footer_style2 = """<style>
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #212121;
+color: #f1f1f1;
+text-align: center;
+padding: 2px;
+font-size: 12px;
+}
+a {
+color: #f1f1f1;
+text-decoration: none;
+}
+</style>
+<div class="footer">
+<p>Made by <a href='https://github.com/ErnestAroozoo' target='_blank'>Ernest Aroozoo</a> and <a href='https://github.com/rlaze' target='_blank'>Ryan Lazenby</a> | <a href='https://github.com/ErnestAroozoo/CoverLetterGenerator' target='_blank'>View on GitHub</a></p>
+</div>
+"""
+st.markdown(add_footer_style2, unsafe_allow_html=True)
