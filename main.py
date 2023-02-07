@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 # CUSTOMIZATION: Page configuration
 st.set_page_config(
-    page_title="CoverLetterGenerator.net",
+    page_title="Cover Letter Generator",
     page_icon="📝",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -76,15 +76,15 @@ load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Title
-st.title("📝 CoverLetterGenerator.net")
+st.title("📝 Cover Letter Generator")
 # Intro Text
 intro = st.empty()
 with intro.container():
     # Text body
     st.markdown("""
     ------------
-    ### What is CoverLetterGenerator.net?
-    CoverLetterGenerator.net is a web application that uses the power of OpenAI's GPT-3 model to generate custom cover letters for job applications. The app allows users to input their resume and then generates a cover letter tailored to the job they are applying for. The generated cover letter is based on the information provided by the user, making it unique and personalized. CoverLetterGenerator.net is designed to make the job application process faster and more efficient by taking care of the tedious task of writing a cover letter.
+    ### What is Cover Letter Generator?
+    Cover Letter Generator is a web application that uses the power of OpenAI's GPT-3 model to generate custom cover letters for job applications. The app allows users to input their resume and then generates a cover letter tailored to the job they are applying for. The generated cover letter is based on the information provided by the user, making it unique and personalized. Cover Letter Generator is designed to make the job application process faster and more efficient by taking care of the tedious task of writing a cover letter.
     
     """)
     st.info(
@@ -125,7 +125,7 @@ text-decoration: none;
 }
 </style>
 <div class="footer">
-<p>Made by <a href='https://github.com/ErnestAroozoo' target='_blank'>Ernest Aroozoo</a> and <a href='https://github.com/rlaze' target='_blank'>Ryan Lazenby</a> | <a href='https://github.com/ErnestAroozoo/CoverLetterGenerator.net' target='_blank'>View on GitHub</a></p>
+<p>Made by <a href='https://github.com/ErnestAroozoo' target='_blank'>Ernest Aroozoo</a> | <a href='https://github.com/ErnestAroozoo/CoverLetterGenerator.net' target='_blank'>View on GitHub</a></p>
 </div>
 """
 st.markdown(add_footer_style2, unsafe_allow_html=True)
